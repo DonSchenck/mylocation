@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>
+    Click Submit to get your location based on your IP address of <div id="ipaddress"></div>
+</h2>
+<button type="button" class="btn btn-primary" onclick="getLocation()">Submit</button>
+<div id='locationdiv' class="row">
+</div>
+
+<script type="application/javascript">
+  function getIP(json) {
+      document.getElementById('ipaddress').innerHTML=json.ip;
+  }
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+<script type="application/javascript">
+    function getLocation() {
+        var data = "75.75.173.72";
+        $.get("http://localhost/locationms", function(response) {
+            data = response;
+            getElementById('locationdiv').innerHTML = data;
+        }).error(function(){
+            alert('Sorry but it failed!');
+        });
+        return data;
+    }
+</script>

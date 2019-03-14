@@ -6,8 +6,11 @@
     Click Submit to get your location based on your IP address of <div id="ipaddress"></div>
 </h2>
 <button type="button" class="btn btn-primary" onclick="getLocation()">Submit</button>
-<div id='locationdiv' class="row">
+<div class="row">
+    <div id="resultArea"></div>
 </div>
+
+<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 
 <script type="application/javascript">
   function getIP(json) {
@@ -19,12 +22,28 @@
 
 <script type="application/javascript">
     function getLocation() {
-        var data = "75.75.173.72";
-        $.get("http://localhost/locationms", function(response) {
-            data = response;
-            getElementById('locationdiv').innerHTML = data;
-        }).error(function(){
-            alert('Sorry but it failed!');
+        //document.getElementById('locationdiv').innerHTML = "Result here";
+        var ipAddress = document.getElementById('ipaddress').innerHTML;
+        jQuery.get("http://locationms-kubex.192.168.99.100.nip.io/" + ipAddress, function(data) {
+            var parsedJSON = JSON.parse(data);
+            var outstring = "query: " + parsedJSON["query"];
+            outstring = outstring + "status: " + parsedJSON["status"] + "\n";
+            outstring = outstring + "country: " + parsedJSON["country"];
+            outstring = outstring + "countryCode: " + parsedJSON["countryCode"];
+            outstring = outstring + "region: " + parsedJSON["region"];
+            outstring = outstring + "regionName: " + parsedJSON["regionName"];
+            outstring = outstring + "city: " + parsedJSON["city"];
+            outstring = outstring + "zip: " + parsedJSON["zip"];
+            outstring = outstring + "lat: " + parsedJSON["lat"];
+            outstring = outstring + "lon: " + parsedJSON["lon"];
+            outstring = outstring + "timezone: " + parsedJSON["timezone"];
+            outstring = outstring + "isp: " + parsedJSON["isp"];
+            outstring = outstring + "org: " + parsedJSON["org"];
+            outstring = outstring + "as: " + parsedJSON["as"];
+            //$('#resultArea').text(outstring);
+            $('#resultArea').html(outstring);
+        }).fail(function(){
+            document.getElementById('locationdiv').innerHTML = "Call to service failed.";
         });
         return data;
     }

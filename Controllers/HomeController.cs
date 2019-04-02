@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using mylocation.Models;
+using RestSharp;
 
 namespace mylocation.Controllers
 {
@@ -29,6 +30,23 @@ namespace mylocation.Controllers
             return View();
         }
 
+        public IActionResult GetLocation()
+        {
+            // Call service to get location information based on IP address
+            var client = new RestClient("locationms");
+            var response = client.Get(new RestRequest());
+            ViewData["LocationJSON"] = response.Content;
+
+            return View();
+        }
+public string GetReleases(string url)
+{
+    var client = new RestClient(url);
+ 
+    var response = client.Execute(new RestRequest());
+ 
+    return response.Content;
+}
         public IActionResult Privacy()
         {
             return View();

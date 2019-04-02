@@ -3,23 +3,9 @@
 }
 
 <h2>
-    Click Submit to get your location based on your IP address of <div id="ipaddress"></div>
+    Click the link, below, to get your location based on your IP address of <div id="ipaddress"></div>
 </h2>
-<button type="button" class="btn btn-primary" onclick="getLocation()">Submit</button>
-<div id='query'></div>
-<div id='status'></div>
-<div id='country'></div>
-<div id='countryCode'></div>
-<div id='region'></div>
-<div id='regionName'></div>
-<div id='city'></div>
-<div id='zip'></div>
-<div id='lat'></div>
-<div id='lon'></div>
-<div id='timezone'></div>
-<div id='isp'></div>
-<div id='org'></div>
-<div id='as'></div>
+<a class="btn" asp-area="" asp-controller="Home" asp-action="GetLocation">Get Your Location Information</a>
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 
@@ -30,31 +16,3 @@
 </script>
 
 <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-
-<script type="application/javascript">
-    function getLocation() {
-        //document.getElementById('locationdiv').innerHTML = "Result here";
-        var ipAddress = document.getElementById('ipaddress').innerHTML;
-        jQuery.get("http://locationms-kubex.192.168.99.100.nip.io/" + ipAddress, function(data) {
-            var parsedJSON = JSON.parse(data);
-            $('#query').text('query: ' + parsedJSON['query']);
-            $('#status').text('status: ' + parsedJSON['status']);
-            $('#country').text('country: ' + parsedJSON['country']);
-            $('#countryCode').text('countryCode: ' + parsedJSON['countryCode']);
-            $('#region').text('region: ' + parsedJSON['region']);
-            $('#regionName').text('regionName: ' + parsedJSON['regionName']);
-            $('#city').text('city: ' + parsedJSON['city']);
-            $('#zip').text('zip: ' + parsedJSON['zip']);
-            $('#lat').text('lat: ' + parsedJSON['lat']);
-            $('#lon').text('lon: ' + parsedJSON['lon']);
-            $('#timezone').text('timezone: ' + parsedJSON['timezone']);
-            $('#isp').text('isp: ' + parsedJSON['isp']);
-            $('#org').text('org: ' + parsedJSON['org']);
-            $('#as').text('as: ' + parsedJSON['as']);
-
-        }).fail(function(){
-            document.getElementById('locationdiv').innerHTML = "Call to service failed.";
-        });
-        return data;
-    }
-</script>

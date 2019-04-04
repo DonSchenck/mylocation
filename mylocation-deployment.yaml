@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mylocation
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mylocation
@@ -19,4 +19,5 @@ spec:
         - containerPort: 80
         env:
         - name: locationms_url
-          value: "http://172.25.112.137:30002/"
+          value: "http://192.168.99.100:31482/"
+          

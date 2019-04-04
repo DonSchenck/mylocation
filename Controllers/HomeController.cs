@@ -33,20 +33,16 @@ namespace mylocation.Controllers
         public IActionResult GetLocation()
         {
             // Call service to get location information based on IP address
-            var client = new RestClient("locationms");
-            var response = client.Get(new RestRequest());
-            ViewData["LocationJSON"] = response.Content;
+            // URL is stored in an environment variable
+            string url = Environment.GetEnvironmentVariable("locationms_url");
+            RestClient client = new RestClient(url);
+            RestRequest request = new RestRequest("75.75.33.33");
+            var response = client.Get(request);
+            var content = response.Content; // raw content as string           
+            ViewData["LocationJSON"] = content;
 
             return View();
         }
-public string GetReleases(string url)
-{
-    var client = new RestClient(url);
- 
-    var response = client.Execute(new RestRequest());
- 
-    return response.Content;
-}
         public IActionResult Privacy()
         {
             return View();

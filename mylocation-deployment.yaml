@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mylocation
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mylocation
+  template:
+    metadata:
+      labels:
+        app: mylocation
+    spec:
+      containers:
+      - name: mylocation
+        image: quay.io/donschenck/mylocation:hardcoded3
+        ports:
+        - containerPort: 80
+        env:
+        - name: locationms_url
+          value: "http://172.25.112.137:30002/"

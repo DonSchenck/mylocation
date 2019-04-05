@@ -34,7 +34,7 @@ namespace mylocation.Controllers
         {
             // Call service to get location information based on IP address
             // URL is stored in an environment variable
-            string url = Environment.GetEnvironmentVariable("locationms_url");
+            string url = Environment.GetEnvironmentVariable("LOCATION_SERVICE_URI");
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest("75.75.33.33");
             var response = client.Get(request);

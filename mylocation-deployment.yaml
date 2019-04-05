@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: mylocation
-        image: quay.io/donschenck/mylocation:hardcoded3
+        image: quay.io/donschenck/mylocation:v1
         ports:
         - containerPort: 80
         env:
-        - name: locationms_url
+        - name: LOCATION_SERVICE_URI
           value: "http://192.168.99.100:31482/"
           

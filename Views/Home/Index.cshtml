@@ -1,17 +1,24 @@
-﻿@{
+﻿@model mylocation.Controllers.HomeController.ipaddress
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <h2>
-    Click the link, below, to get your location based on your IP address of <div id="ipaddress"></div>
+    Click the link, below, to get your location based on your IP address of 
+<div id="ipaddress">
+    @Html.Label(Model.ip)
+</div>
 </h2>
+
 <a class="btn" asp-area="" asp-controller="Home" asp-action="GetLocation">Get Your Location Information</a>
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 
 <script type="application/javascript">
   function getIP(json) {
-      document.getElementById('ipaddress').innerHTML=json.ip;
+    document.getElementById('ipaddress').innerHTML=json.ip;
+      
   }
 </script>
 

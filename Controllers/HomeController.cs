@@ -11,9 +11,15 @@ namespace mylocation.Controllers
 {
     public class HomeController : Controller
     {
+        public class ipaddress
+        {
+            public string ip {get;set;}
+        }
         public IActionResult Index()
         {
-            return View();
+            ipaddress addr = new ipaddress();
+            addr.ip = "75.33.55.88";
+            return View(addr);
         }
 
         public IActionResult About()
@@ -30,11 +36,12 @@ namespace mylocation.Controllers
             return View();
         }
 
-        public IActionResult GetLocation()
+        public IActionResult GetLocation(ipaddress ipaddr)
         {
             // Call service to get location information based on IP address
             // URL is stored in an environment variable
             string url = Environment.GetEnvironmentVariable("LOCATION_SERVICE_URI");
+            Console.WriteLine("LOCATION_SERVICE_URI: " + url);
             RestClient client = new RestClient(url);
             RestRequest request = new RestRequest("75.75.33.33");
             var response = client.Get(request);

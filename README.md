@@ -30,6 +30,8 @@ Use the dashboard to create the new project 'test'.
 1. Select the "Create route" checkbox.
 1. Click the "Create" button.
 
+### This may take a few (five?) minutes.
+
 
 ## View the results
 

@@ -32,6 +32,10 @@ Use the dashboard to create the new project 'test'.
 
 ### This may take a few (five?) minutes.
 
+If you want to see things happen, select the Workloads --> Pods option on the left-hand menu and watch pods (build, deploy, and application) being built.
+
+### NOTE: THE IP ADDRESS IS HARD-CODED AT THIS TIME
+
 
 ## View the results
 

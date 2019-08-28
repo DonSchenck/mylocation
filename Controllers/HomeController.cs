@@ -44,7 +44,7 @@ namespace mylocation.Controllers
             Console.WriteLine("LOCATION_SERVICE_URI: " + url);
             RestClient client = new RestClient(url);
             var request = new RestRequest("/{ipaddr}", Method.GET);
-            request.AddUrlSegment("ipaddr", ipaddr);
+            request.AddUrlSegment("ipaddr", ipaddr.ip);
             IRestResponse response = client.Execute(request);
             var content = response.Content; // raw content as string           
             ViewData["LocationJSON"] = content;

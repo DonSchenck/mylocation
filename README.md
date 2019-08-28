@@ -24,6 +24,7 @@ Use the dashboard to create the new project 'test'.
 1. From the "Catalog" section of the left-hand menu, choose "Developer Catalog".
 1. Select the ".NET Core" catalog.
 1. Click "Create Application"
+1. Select .NET Version 2.1.
 1. Use "mylocation" (no quotes) as the name.
 1. Use "https://github.com/donschenck/mylocation.git" as the Git Repository.
 1. Select the "Create route" checkbox.
